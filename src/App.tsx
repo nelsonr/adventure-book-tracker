@@ -20,7 +20,10 @@ function App () {
 
                 <Group isVertical={true} fill={true}>
                     <Group fill={true}>
-                        <List title="Equipment" />
+                        <Group isVertical={true} fill={true}>
+                            <List title="Equipment" />
+                            <List title="Provisions" />
+                        </Group>
 
                         <Group isVertical={true} fill={true}>
                             <Group isVertical={true}>
@@ -31,7 +34,6 @@ function App () {
                                 <List title="Potions" />
                             </Group>
 
-                            <List title="Provisions" />
                         </Group>
                     </Group>
                 </Group>
