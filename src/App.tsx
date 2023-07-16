@@ -28,12 +28,10 @@ function App () {
                         <Group isVertical={true} fill={true}>
                             <Group isVertical={true}>
                                 <StatsItem title="Gold" />
-
-                                <List title="Jewels" />
-
-                                <List title="Potions" />
                             </Group>
+                            <List title="Jewels" />
 
+                            <List title="Potions" />
                         </Group>
                     </Group>
                 </Group>
