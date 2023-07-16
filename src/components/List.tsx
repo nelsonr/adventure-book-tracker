@@ -26,8 +26,6 @@ export default function List (props: ListProps) {
                     <div className="list__title">{title}</div>
                 </div>
 
-                <div className="list__separator"></div>
-
                 <textarea
                     className="list__body"
                     value={value}
