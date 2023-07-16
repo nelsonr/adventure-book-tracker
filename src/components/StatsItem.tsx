@@ -26,7 +26,7 @@ export default function Group (props: StatsItemProps) {
                 <input
                     className="stats-item__value"
                     type='number'
-                    value={value}
+                    value={value.toString()}
                     onChange={onChange}
                 />
             </div>
