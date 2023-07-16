@@ -1,0 +1,21 @@
+.group {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-base);
+}
+
+.group > *:not(.group) {
+    flex: 1;
+}
+
+.group--is-vertical {
+    flex-direction: column;
+}
+
+.group--no-gap {
+    gap: 0;
+}
+
+.group--fill {
+    flex: 1;
+}

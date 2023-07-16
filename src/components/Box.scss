@@ -1,0 +1,44 @@
+.box {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-base);
+    background-color: var(--color-base);
+    background-image: url("/paper-texture-bg.jpg");
+    background-blend-mode: color-burn, normal;
+    padding: 27px;
+    border-radius: 4px;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        bottom: 8px;
+        right: 8px;
+        background-image: url("/border-texture-bg.png");
+        background-position: 46% 0%;
+        background-attachment: scroll;
+        mix-blend-mode: darken;
+        border-radius: 2px;
+        z-index: 0;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 11px;
+        left: 11px;
+        bottom: 11px;
+        right: 11px;
+        background-color: var(--color-base);
+        background-image: url("/paper-texture-bg.jpg");
+        background-blend-mode: color-burn, normal;
+        z-index: 1;
+    }
+}
+
+.box > * {
+    z-index: 2;
+    position: relative;
+}

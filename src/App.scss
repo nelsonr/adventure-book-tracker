@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&display=swap");
+
+@import "./variables";
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: "EB Garamond", serif;
+    margin: 0;
+    background-color: var(--color-background);
+    color: var(--color-neutral-dark);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-weight: normal;
+}
+
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child {
+    margin-top: 0;
+}
+
+h1:last-child,
+h2:last-child,
+h3:last-child,
+h4:last-child,
+h5:last-child {
+    margin-bottom: 0;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 500;
+    position: relative;
+    top: -0.1em;
+}
+
+h3,
+h4 {
+    font-weight: 500;
+}
+
+#root {
+    height: 100%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-base);
+    height: 100%;
+}
+
+label {
+    margin-bottom: var(--space-xs);
+}
+
+input {
+    padding: var(--space-s) var(--space-s);
+    outline: none;
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    width: 100%;
+}
+
+textarea {
+    display: block;
+    background-color: transparent;
+    height: 100%;
+    font-size: 18px;
+    line-height: 32px;
+    padding: var(--space-s) var(--space-base);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.margin-top-none {
+    margin-bottom: 0;
+}
+
+.margin-left-none {
+    margin-bottom: 0;
+}
+
+.margin-right-none {
+    margin-bottom: 0;
+}
+
+.margin-bottom-none {
+    margin-bottom: 0;
+}
+
+.text-align-center {
+    text-align: center;
+}

@@ -1,0 +1,24 @@
+.stats-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stats-item__title {
+    font-size: 24px;
+    font-weight: 500;
+    z-index: 2;
+}
+
+.stats-item__value {
+    font-size: 36px;
+    font-weight: 500;
+    z-index: 2;
+}
+
+.stats-item input {
+    text-align: center;
+    height: auto;
+    min-height: auto;
+    flex: 0;
+}

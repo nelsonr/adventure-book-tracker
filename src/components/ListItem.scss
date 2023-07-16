@@ -1,0 +1,14 @@
+.list-item {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    gap: var(--space-base);
+}
+
+.list-item__title {
+    flex: 1;
+}
+
+.list-item--hide-quantity .list-item__quantity {
+    display: none;
+}
