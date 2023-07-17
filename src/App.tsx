@@ -5,7 +5,6 @@ import List from './components/List'
 import StatsItem from './components/StatsItem'
 import './App.scss'
 import { loadStorage, updateStorage } from './Storage'
-import ListItem from './components/ListItem'
 
 interface AppState {
     skill: { title: string; value: number; };
