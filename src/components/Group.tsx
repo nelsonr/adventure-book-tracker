@@ -6,16 +6,18 @@ interface GroupProps {
     isVertical?: boolean;
     noGap?: boolean;
     fill?: boolean;
+    alignCenter?: boolean;
 }
 
 export default function Group (props: GroupProps) {
-    const { children, isVertical, noGap, fill } = props;
+    const { children, isVertical, noGap, fill, alignCenter } = props;
 
     const className = getClassName([
         "group",
         (isVertical ? "group--is-vertical" : ""),
         (noGap ? "group--no-gap" : ""),
-        (fill ? "group--fill" : "")
+        (fill ? "group--fill" : ""),
+        (alignCenter ? "group--align-center" : "")
     ]);
 
     return (

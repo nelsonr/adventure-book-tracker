@@ -4,17 +4,19 @@ import { GameReducer } from './GameReducer'
 import StatsAndEquipment from './views/StatsAndEquipment'
 
 import './App.scss'
-import { curry } from './Utils'
 
 const initialState: GameState = {
-    skill: { title: "Skill", value: 0 },
-    stamina: { title: "Stamina", value: 0 },
-    luck: { title: "Luck", value: 0 },
-    gold: { title: "Gold", value: 0 },
-    equipment: { title: "Equipment", value: "" },
-    provisions: { title: "Provisions", value: "" },
-    jewels: { title: "Jewels", value: "" },
-    potions: { title: "Potions", value: "" },
+    version: "0.1.0",
+    stats: {
+        skill: { title: "Skill", value: 0, initialValue: 0, isLocked: false },
+        stamina: { title: "Stamina", value: 0, initialValue: 0, isLocked: false },
+        luck: { title: "Luck", value: 0, initialValue: 0, isLocked: false },
+        gold: { title: "Gold", value: 0 },
+        equipment: { title: "Equipment", value: "" },
+        provisions: { title: "Provisions", value: "" },
+        jewels: { title: "Jewels", value: "" },
+        potions: { title: "Potions", value: "" },
+    }
 };
 
 function App () {
@@ -32,13 +34,23 @@ function App () {
         updateStorage(state);
     }, [state])
 
-    const onChange = curry((propName: string) => {
+    const onInitialValueChange = (propName: string) => {
+        return (value: string | number) => dispatch({ type: "updateInitialValue", propName, value });
+    };
+
+    const onInitialValueLock = (propName: string) => {
+        return () => dispatch({ type: "lockInitialValue", propName });
+    };
+
+    const onChange = (propName: string) => {
         return (value: string | number) => dispatch({ type: "update", propName, value });
-    });
+    };
 
     return (
         <StatsAndEquipment
-            state={state}
+            state={state.stats}
+            onInitialValueChange={onInitialValueChange}
+            onInitialValueLock={onInitialValueLock}
             onChange={onChange}
         />
     )

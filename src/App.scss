@@ -70,6 +70,7 @@ label {
 }
 
 input {
+    font-family: "EB Garamond", serif;
     padding: var(--space-s) var(--space-s);
     outline: none;
     background-color: transparent;
@@ -80,11 +81,13 @@ input {
 textarea {
     display: block;
     background-color: transparent;
+    font-family: "EB Garamond", serif;
     height: 100%;
     font-size: 18px;
     line-height: 32px;
     padding: var(--space-s) var(--space-base);
     border: 1px solid rgba(0, 0, 0, 0.3);
+    outline: none;
 }
 
 .margin-top-none {

@@ -22,3 +22,21 @@
     min-height: auto;
     flex: 0;
 }
+
+.stats-item button {
+    width: 100%;
+}
+
+.stats-item__separator {
+    font-size: 36px;
+    font-weight: 500;
+}
+
+.group .stats-item__separator {
+    flex-grow: 0;
+}
+
+.stats-item__initial-value {
+    font-size: 36px;
+    font-weight: 500;
+}
