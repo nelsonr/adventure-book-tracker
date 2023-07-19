@@ -32,21 +32,27 @@ export default function StatsItem (props: StatsItemProps) {
                 <div className={className}>
                     <div className="stats-item__title">{stat.title}</div>
                     <Group alignCenter={true} noGap={true}>
-                        <input
-                            className="stats-item__value"
-                            type='number'
-                            value={stat.value.toString()}
-                            onChange={onInputChange}
-                        />
+                        <div>
+                            <label>Current</label>
+                            <input
+                                className="stats-item__value"
+                                type='number'
+                                value={stat.value.toString()}
+                                onChange={onInputChange}
+                            />
+                        </div>
 
                         <span className='stats-item__separator'>/</span>
 
-                        <input
-                            className="stats-item__value"
-                            type='number'
-                            value={stat.initialValue.toString()}
-                            onChange={onInitialInputChange}
-                        />
+                        <div>
+                            <label>Initial</label>
+                            <input
+                                className="stats-item__value"
+                                type='number'
+                                value={stat.initialValue.toString()}
+                                onChange={onInitialInputChange}
+                            />
+                        </div>
                     </Group>
                 </div>
             </Box >
