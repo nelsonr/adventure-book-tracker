@@ -103,3 +103,11 @@
 .tabs-body .tabs-item:not(.tabs-item--is-active) {
     display: none;
 }
+
+@media screen and (max-width: 480px) {
+    @-moz-document url-prefix() {
+        .tabs {
+            filter: none;
+        }
+    }
+}

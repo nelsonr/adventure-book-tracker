@@ -2,7 +2,7 @@ import { getClassName } from '../Utils';
 import Box from './Box';
 import './Enemy.scss';
 import { ChangeEvent } from 'react';
-import Separator from './Separator';
+import Group from './Group';
 
 interface EnemyProps {
     enemy: Enemy;
@@ -37,25 +37,29 @@ export function Enemy (props: EnemyProps) {
             <div className={className}>
                 <div className="stats-item__title">Enemy</div>
 
-                <label htmlFor={"enemy-skill-" + enemy.id}>Skill</label>
-                <input
-                    id={"enemy-skill-" + enemy.id}
-                    className="stats-item__value"
-                    type='number'
-                    value={enemy.skill.toString()}
-                    onChange={onSkillChange}
-                />
+                <Group wrap={false}>
+                    <div>
+                        <label htmlFor={"enemy-skill-" + enemy.id}>Skill</label>
+                        <input
+                            id={"enemy-skill-" + enemy.id}
+                            className="stats-item__value"
+                            type='number'
+                            value={enemy.skill.toString()}
+                            onChange={onSkillChange}
+                        />
+                    </div>
 
-                <Separator size={'s'} hideLine={true} />
-
-                <label htmlFor={"enemy-stamina-" + enemy.id}>Stamina</label>
-                <input
-                    id={"enemy-stamina-" + enemy.id}
-                    className="stats-item__value"
-                    type='number'
-                    value={enemy.stamina.toString()}
-                    onChange={onStaminaChange}
-                />
+                    <div>
+                        <label htmlFor={"enemy-stamina-" + enemy.id}>Stamina</label>
+                        <input
+                            id={"enemy-stamina-" + enemy.id}
+                            className="stats-item__value"
+                            type='number'
+                            value={enemy.stamina.toString()}
+                            onChange={onStaminaChange}
+                        />
+                    </div>
+                </Group>
             </div>
         </Box >
     )

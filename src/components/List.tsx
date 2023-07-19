@@ -28,7 +28,6 @@ export default function List (props: ListProps) {
                 </div>
 
                 <textarea
-                    className="list__body"
                     value={value}
                     onChange={onInputChange}
                     placeholder='Add your notes here...'

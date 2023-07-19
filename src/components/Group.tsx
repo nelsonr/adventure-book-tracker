@@ -18,7 +18,8 @@ export default function Group (props: GroupProps) {
         (isVertical ? "group--is-vertical" : ""),
         (noGap ? "group--no-gap" : ""),
         (fill ? "group--fill" : ""),
-        (wrap ? "group--wrap" : ""),
+        (wrap === true ? "group--wrap" : ""),
+        (wrap === false ? "group--no-wrap" : ""),
         (alignCenter ? "group--align-center" : "")
     ]);
 

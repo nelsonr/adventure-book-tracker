@@ -61,7 +61,7 @@ function App () {
         <main>
             <Tabs>
                 <TabsHeader>
-                    <TabsItem isActive={activeTab === 0} onClick={() => setActiveTab(0)}><h1>Stats & Equipment</h1></TabsItem>
+                    <TabsItem isActive={activeTab === 0} onClick={() => setActiveTab(0)}><h1>Stats</h1></TabsItem>
                     <TabsItem isActive={activeTab === 1} onClick={() => setActiveTab(1)}><h1>Combat</h1></TabsItem>
                 </TabsHeader>
                 <TabsBody>
