@@ -3,6 +3,7 @@
     flex-direction: column;
     gap: var(--space-base);
     flex: 1;
+    filter: url(#squiggle);
 }
 
 .tabs-header {

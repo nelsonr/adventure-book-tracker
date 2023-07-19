@@ -77,8 +77,7 @@ label {
 }
 
 input,
-textarea,
-button {
+textarea {
     border-radius: 2px;
 }
 
@@ -96,7 +95,7 @@ textarea {
     background-color: transparent;
     font-family: "EB Garamond", serif;
     height: 100%;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 32px;
     padding: var(--space-s) var(--space-base);
     border: 1px solid rgba(0, 0, 0, 0.3);

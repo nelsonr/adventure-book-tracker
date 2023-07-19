@@ -77,6 +77,25 @@ function App () {
                     </TabsItem>
                 </TabsBody>
             </Tabs>
+
+            {/* Rough edges SVG */}
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="0" width="0" >
+                <defs>
+                    <filter id="squiggle">
+                        <feTurbulence
+                            type="fractalNoise"
+                            id="turbulence"
+                            baseFrequency=".01"
+                            numOctaves="1"
+                        />
+                        <feDisplacementMap
+                            id="displacement"
+                            in="SourceGraphic"
+                            scale="2"
+                        />
+                    </filter>
+                </defs>
+            </svg>
         </main>
     );
 }
