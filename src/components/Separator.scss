@@ -1,7 +1,6 @@
 .separator {
     position: relative;
     align-self: normal;
-    background-color: var(--color-base);
     background-blend-mode: color-burn, normal;
 
     &::before {

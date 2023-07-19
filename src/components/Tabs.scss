@@ -2,14 +2,13 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-base);
+    flex: 1;
 }
 
 .tabs-header {
     display: flex;
     gap: var(--space-base);
     background-color: var(--color-base);
-    background-image: url("/paper-texture-bg.jpg");
-    background-blend-mode: color-burn, normal;
     padding: 27px;
     border-radius: 4px;
     position: relative;
@@ -52,8 +51,7 @@
     cursor: pointer;
     text-align: center;
     flex: 1;
-    background-color: var(--color-base);
-    background-blend-mode: color-burn, normal;
+    border-radius: 2px;
 
     & + .tabs-item::before {
         content: "";
@@ -93,6 +91,13 @@
             z-index: 2;
         }
     }
+}
+
+.tabs-item,
+.tabs-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .tabs-body .tabs-item:not(.tabs-item--is-active) {

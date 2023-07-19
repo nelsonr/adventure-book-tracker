@@ -31,7 +31,7 @@ export default function StatsItem (props: StatsItemProps) {
             <Box>
                 <div className={className}>
                     <div className="stats-item__title">{stat.title}</div>
-                    <Group alignCenter={true}>
+                    <Group alignCenter={true} noGap={true}>
                         <input
                             className="stats-item__value"
                             type='number'

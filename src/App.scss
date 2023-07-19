@@ -70,6 +70,12 @@ label {
     margin-bottom: var(--space-xs);
 }
 
+input,
+textarea,
+button {
+    border-radius: 2px;
+}
+
 input {
     font-family: "EB Garamond", serif;
     padding: var(--space-s) var(--space-s);
