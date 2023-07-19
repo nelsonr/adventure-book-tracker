@@ -3,16 +3,18 @@ import './Separator.scss';
 
 interface SeparatorProps {
     size: "xs" | "s" | "base" | "m" | "l" | "xl";
-    showLine?: boolean;
+    hideLine?: boolean;
+    isVertical?: boolean;
 }
 
 export default function Separator (props: SeparatorProps) {
-    const { size, showLine } = props;
+    const { size, hideLine, isVertical } = props;
 
     const className = getClassName([
         "separator",
         "separator--" + size,
-        (showLine == undefined || showLine ? "" : "separator--hide-line")
+        (hideLine ? "separator--hide-line" : ""),
+        (isVertical ? "separator--is-vertical" : "")
     ]);
 
     return (

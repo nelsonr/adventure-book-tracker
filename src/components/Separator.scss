@@ -1,37 +1,103 @@
 .separator {
-    border-bottom: 1px solid;
+    position: relative;
+    align-self: normal;
+    background-color: var(--color-base);
+    background-blend-mode: color-burn, normal;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        bottom: 50%;
+        right: 50%;
+        width: 100%;
+        height: 2px;
+        background-image: url("/border-texture-bg.png");
+        background-position: 76% 0%;
+        background-attachment: scroll;
+        mix-blend-mode: darken;
+        border-radius: 2px;
+        z-index: 0;
+        transform: translate(-50%, -50%);
+    }
 }
 
-.separator--xs {
-    padding-top: var(--space-xs);
-    padding-bottom: var(--space-xs);
+.separator:not(.separator--is-vertical) {
+    &.separator--xs {
+        padding-top: var(--space-xs);
+        padding-bottom: var(--space-xs);
+    }
+
+    &.separator--s {
+        padding-top: var(--space-s);
+        padding-bottom: var(--space-s);
+    }
+
+    &.separator--base {
+        padding-top: var(--space-base);
+        padding-bottom: var(--space-base);
+    }
+
+    &.separator--m {
+        padding-top: var(--space-m);
+        padding-bottom: var(--space-m);
+    }
+
+    &.separator--l {
+        padding-top: var(--space-l);
+        padding-bottom: var(--space-l);
+    }
+
+    &.separator--xl {
+        padding-top: var(--space-xl);
+        padding-bottom: var(--space-xl);
+    }
 }
 
-.separator--s {
-    padding-top: var(--space-s);
-    padding-bottom: var(--space-s);
+.separator--is-vertical {
+    border-bottom: none;
+
+    &::before {
+        width: 2px;
+        height: 100%;
+    }
+
+    &.separator--xs {
+        padding-left: var(--space-xs);
+        padding-right: var(--space-xs);
+    }
+
+    &.separator--s {
+        padding-left: var(--space-s);
+        padding-right: var(--space-s);
+    }
+
+    &.separator--base {
+        padding-left: var(--space-base);
+        padding-right: var(--space-base);
+    }
+
+    &.separator--m {
+        padding-left: var(--space-m);
+        padding-right: var(--space-m);
+    }
+
+    &.separator--l {
+        padding-left: var(--space-l);
+        padding-right: var(--space-l);
+    }
+
+    &.separator--xl {
+        padding-left: var(--space-xl);
+        padding-right: var(--space-xl);
+    }
 }
 
-.separator--base {
-    padding-top: var(--space-base);
-    padding-bottom: var(--space-base);
+.separator--hide-line::before {
+    display: none;
 }
 
-.separator--m {
-    padding-top: var(--space-m);
-    padding-bottom: var(--space-m);
-}
-
-.separator--l {
-    padding-top: var(--space-l);
-    padding-bottom: var(--space-l);
-}
-
-.separator--xl {
-    padding-top: var(--space-xl);
-    padding-bottom: var(--space-xl);
-}
-
-.separator--hide-line {
-    border: unset;
+.group .separator--is-vertical {
+    flex: 0;
 }

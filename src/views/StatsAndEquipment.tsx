@@ -1,89 +1,73 @@
-import Box from "../components/Box";
 import Group from "../components/Group";
 import List from "../components/List";
 import StatsItem from "../components/StatsItem";
 
 interface StatsAndEquipmentProps {
     state: Stats;
-    onInitialValueChange: (propName: string) => (value: string | number) => unknown
-    onInitialValueLock: (propName: string) => () => unknown;
-    onChange: (propName: string) => (value: string | number) => unknown
+    onInitialStatChange: (statName: string) => (value: string | number) => unknown
+    onStatChange: (statName: string) => (value: string | number) => unknown
 }
 
 export default function StatsAndEquipment (props: StatsAndEquipmentProps) {
     const {
         state,
-        onInitialValueChange,
-        onInitialValueLock,
-        onChange,
+        onInitialStatChange,
+        onStatChange,
     } = props;
 
-    const onSkillChange = onChange("skill");
-    const onStaminaChange = onChange("stamina");
-    const onLuckChange = onChange("luck");
-    const onEquipmentChange = onChange("equipment");
-    const onProvisionsChange = onChange("provisions");
-    const onGoldChange = onChange("gold");
-    const onJewelsChange = onChange("jewels");
-    const onPotionsChange = onChange("potions");
+    const onSkillChange = onStatChange("skill");
+    const onStaminaChange = onStatChange("stamina");
+    const onLuckChange = onStatChange("luck");
+    const onEquipmentChange = onStatChange("equipment");
+    const onProvisionsChange = onStatChange("provisions");
+    const onGoldChange = onStatChange("gold");
+    const onJewelsChange = onStatChange("jewels");
+    const onPotionsChange = onStatChange("potions");
 
-    const onInitialSkillLock = onInitialValueLock("skill");
-    const onInitialStaminaLock = onInitialValueLock("stamina");
-    const onInitialLuckLock = onInitialValueLock("luck");
-
-    const onInitialSkillChange = onInitialValueChange("skill");
-    const onInitialStaminaChange = onInitialValueChange("stamina");
-    const onInitialLuckChange = onInitialValueChange("luck");
+    const onInitialSkillChange = onInitialStatChange("skill");
+    const onInitialStaminaChange = onInitialStatChange("stamina");
+    const onInitialLuckChange = onInitialStatChange("luck");
 
     return (
-        <main>
+        <Group isVertical={true} fill={true}>
+            <Group>
+                <StatsItem
+                    stat={state.skill}
+                    onValueChange={onSkillChange}
+                    onInitialValueChange={onInitialSkillChange}
+                />
+                <StatsItem
+                    stat={state.stamina}
+                    onValueChange={onStaminaChange}
+                    onInitialValueChange={onInitialStaminaChange}
+                />
+                <StatsItem
+                    stat={state.luck}
+                    onValueChange={onLuckChange}
+                    onInitialValueChange={onInitialLuckChange}
+                />
+            </Group>
+
             <Group isVertical={true} fill={true}>
-                <Group>
-                    <Box><h1>Stats & Equipment</h1></Box>
-                </Group>
+                <Group fill={true}>
+                    <Group isVertical={true} fill={true}>
+                        <List title={state.equipment.title} value={state.equipment.value as string} onChange={onEquipmentChange} />
+                        <List title={state.provisions.title} value={state.provisions.value as string} onChange={onProvisionsChange} />
+                    </Group>
 
-                <Group>
-                    <StatsItem
-                        stat={state.skill}
-                        onChange={onSkillChange}
-                        onInitialValueChange={onInitialSkillChange}
-                        onInitialValueLock={onInitialSkillLock}
-                    />
-                    <StatsItem
-                        stat={state.stamina}
-                        onChange={onStaminaChange}
-                        onInitialValueChange={onInitialStaminaChange}
-                        onInitialValueLock={onInitialStaminaLock}
-                    />
-                    <StatsItem
-                        stat={state.luck}
-                        onChange={onLuckChange}
-                        onInitialValueChange={onInitialLuckChange}
-                        onInitialValueLock={onInitialLuckLock}
-                    />
-                </Group>
-
-                <Group isVertical={true} fill={true}>
-                    <Group fill={true}>
-                        <Group isVertical={true} fill={true}>
-                            <List title={state.equipment.title} value={state.equipment.value as string} onChange={onEquipmentChange} />
-                            <List title={state.provisions.title} value={state.provisions.value as string} onChange={onProvisionsChange} />
+                    <Group isVertical={true} fill={true}>
+                        <Group isVertical={true}>
+                            <StatsItem
+                                stat={state.gold}
+                                onValueChange={onGoldChange}
+                            />
                         </Group>
 
-                        <Group isVertical={true} fill={true}>
-                            <Group isVertical={true}>
-                                <StatsItem
-                                    stat={state.gold}
-                                    onChange={onGoldChange}
-                                />
-                            </Group>
-
-                            <List title={state.jewels.title} value={state.jewels.value as string} onChange={onJewelsChange} />
-                            <List title={state.potions.title} value={state.potions.value as string} onChange={onPotionsChange} />
-                        </Group>
+                        <List title={state.jewels.title} value={state.jewels.value as string} onChange={onJewelsChange} />
+                        <List title={state.potions.title} value={state.potions.value as string} onChange={onPotionsChange} />
                     </Group>
                 </Group>
             </Group>
-        </main>
+        </Group>
     )
 }

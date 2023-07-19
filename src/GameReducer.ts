@@ -1,60 +1,53 @@
 type Action =
-    | { type: "updateInitialValue"; propName: string; value: string | number; }
-    | { type: "lockInitialValue"; propName: string; }
-    | { type: "update"; propName: string; value: string | number; }
+    | { type: "updateInitialStat"; statName: string; value: string | number; }
+    | { type: "updateStat"; statName: string; value: string | number; }
+    | { type: "updateEnemy"; enemy: Enemy }
 
 export function GameReducer (state: GameState, action: Action): GameState {
     switch (action.type) {
-        case "updateInitialValue":
-            return updateInitialValue(state, action.propName, action.value);
+        case "updateInitialStat":
+            return updateInitialValue(state, action.statName, action.value);
 
-        case "lockInitialValue":
-            return lockInitialValue(state, action.propName);
+        case "updateStat":
+            return updateProperty(state, action.statName, action.value);
 
-        case "update":
-            return updateProperty(state, action.propName, action.value);
+        case "updateEnemy":
+            return updateEnemy(state, action.enemy);
 
         default:
             return state;
     }
 }
 
-function updateInitialValue (state: GameState, propName: string, value: string | number): GameState {
+function updateStat (state: GameState, statName: string, stat: Stat) {
     return {
         ...state,
         stats: {
             ...state.stats,
-            [propName]: {
-                ...state.stats[propName],
-                initialValue: value,
-                value: value
-            }
+            [statName]: stat
         }
     };
 }
 
-function lockInitialValue (state: GameState, propName: string): GameState {
-    return {
-        ...state,
-        stats: {
-            ...state.stats,
-            [propName]: {
-                ...state.stats[propName],
-                isLocked: !state.stats[propName].isLocked
-            }
-        }
-    };
+function updateInitialValue (state: GameState, statName: string, value: string | number): GameState {
+    return updateStat(state, statName, {
+        ...state.stats[statName],
+        initialValue: value,
+    });
 }
 
-function updateProperty (state: GameState, propName: string, value: string | number): GameState {
+function updateProperty (state: GameState, statName: string, value: string | number): GameState {
+    return updateStat(state, statName, {
+        ...state.stats[statName],
+        value: value
+    });
+}
+
+function updateEnemy (state: GameState, enemy: Enemy): GameState {
     return {
         ...state,
-        stats: {
-            ...state.stats,
-            [propName]: {
-                ...state.stats[propName],
-                value: value
-            }
-        }
+        enemies: state.enemies.map((currentEnemy) => {
+            return currentEnemy.id === enemy.id ? enemy : currentEnemy;
+        })
     };
 }

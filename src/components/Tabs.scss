@@ -1,0 +1,100 @@
+.tabs {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-base);
+}
+
+.tabs-header {
+    display: flex;
+    gap: var(--space-base);
+    background-color: var(--color-base);
+    background-image: url("/paper-texture-bg.jpg");
+    background-blend-mode: color-burn, normal;
+    padding: 27px;
+    border-radius: 4px;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        bottom: 8px;
+        right: 8px;
+        background-image: url("/border-texture-bg.png");
+        background-position: 46% 0%;
+        background-attachment: scroll;
+        mix-blend-mode: darken;
+        border-radius: 2px;
+        z-index: 0;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 11px;
+        left: 11px;
+        bottom: 11px;
+        right: 11px;
+        background-color: var(--color-base);
+        background-image: url("/paper-texture-bg.jpg");
+        background-blend-mode: color-burn, normal;
+        z-index: 1;
+    }
+}
+
+.tabs-header > * {
+    z-index: 2;
+    position: relative;
+}
+
+.tabs-header .tabs-item {
+    cursor: pointer;
+    text-align: center;
+    flex: 1;
+    background-color: var(--color-base);
+    background-blend-mode: color-burn, normal;
+
+    & + .tabs-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: calc(var(--space-s) * -1);
+        width: 2px;
+        height: 100%;
+        background-image: url("/border-texture-bg.png");
+        background-position: 76% 0%;
+        background-attachment: scroll;
+        mix-blend-mode: darken;
+        border-radius: 2px;
+        z-index: 0;
+    }
+
+    & + .tabs-item::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: calc(var(--space-s) * -1);
+        width: 2px;
+        height: 100%;
+        background-color: var(--color-base);
+        z-index: -1;
+    }
+
+    &.tabs-item--is-active {
+        color: #fff;
+        background-color: var(--color-action-light);
+        background-image: url("/paper-texture-bg.jpg");
+        background-blend-mode: color-burn, normal;
+
+        & > * {
+            z-index: 2;
+        }
+    }
+}
+
+.tabs-body .tabs-item:not(.tabs-item--is-active) {
+    display: none;
+}

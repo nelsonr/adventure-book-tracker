@@ -1,9 +1,11 @@
-import { useEffect, useReducer } from 'react'
+import { useEffect, useReducer, useState } from 'react'
 import { loadStorage, updateStorage } from './Storage'
 import { GameReducer } from './GameReducer'
 import StatsAndEquipment from './views/StatsAndEquipment'
 
 import './App.scss'
+import { Tabs, TabsBody, TabsHeader, TabsItem } from './components/Tabs'
+import Combat from './views/Combat'
 
 const initialState: GameState = {
     version: "0.1.0",
@@ -16,10 +18,19 @@ const initialState: GameState = {
         provisions: { title: "Provisions", value: "" },
         jewels: { title: "Jewels", value: "" },
         potions: { title: "Potions", value: "" },
-    }
+    },
+    enemies: [
+        { id: 0, skill: 0, stamina: 0 },
+        { id: 1, skill: 0, stamina: 0 },
+        { id: 2, skill: 0, stamina: 0 },
+        { id: 3, skill: 0, stamina: 0 },
+        { id: 4, skill: 0, stamina: 0 },
+        { id: 5, skill: 0, stamina: 0 },
+    ]
 };
 
 function App () {
+    const [activeTab, setActiveTab] = useState(0);
     const [state, dispatch] = useReducer(GameReducer, initialState, (initialState) => {
         const storeData = loadStorage<GameState>();
 
@@ -27,33 +38,47 @@ function App () {
             return initialState;
         }
 
-        return storeData;
+        return Object.assign(initialState, storeData);
     });
 
     useEffect(() => {
         updateStorage(state);
     }, [state])
 
-    const onInitialValueChange = (propName: string) => {
-        return (value: string | number) => dispatch({ type: "updateInitialValue", propName, value });
+    const onInitialValueChange = (statName: string) => {
+        return (value: string | number) => dispatch({ type: "updateInitialStat", statName, value });
     };
 
-    const onInitialValueLock = (propName: string) => {
-        return () => dispatch({ type: "lockInitialValue", propName });
+    const onStatChange = (statName: string) => {
+        return (value: string | number) => dispatch({ type: "updateStat", statName, value });
     };
 
-    const onChange = (propName: string) => {
-        return (value: string | number) => dispatch({ type: "update", propName, value });
+    const onEnemyChange = (enemy: Enemy) => {
+        return dispatch({ type: "updateEnemy", enemy });
     };
 
     return (
-        <StatsAndEquipment
-            state={state.stats}
-            onInitialValueChange={onInitialValueChange}
-            onInitialValueLock={onInitialValueLock}
-            onChange={onChange}
-        />
-    )
+        <main>
+            <Tabs>
+                <TabsHeader>
+                    <TabsItem isActive={activeTab === 0} onClick={() => setActiveTab(0)}><h1>Stats & Equipment</h1></TabsItem>
+                    <TabsItem isActive={activeTab === 1} onClick={() => setActiveTab(1)}><h1>Combat</h1></TabsItem>
+                </TabsHeader>
+                <TabsBody>
+                    <TabsItem isActive={activeTab === 0}>
+                        <StatsAndEquipment
+                            state={state.stats}
+                            onInitialStatChange={onInitialValueChange}
+                            onStatChange={onStatChange}
+                        />
+                    </TabsItem>
+                    <TabsItem isActive={activeTab === 1}>
+                        <Combat state={state} onEnemyChange={onEnemyChange} />
+                    </TabsItem>
+                </TabsBody>
+            </Tabs>
+        </main>
+    );
 }
 
 export default App
