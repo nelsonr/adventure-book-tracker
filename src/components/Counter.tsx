@@ -8,12 +8,11 @@ interface CounterProps {
     initialValue: number;
     minValue?: number;
     maxValue?: number;
-    enableInput?: boolean;
     onChange: (value: number) => unknown;
 }
 
 export default function Counter (props: CounterProps) {
-    const { minValue, maxValue, initialValue, enableInput, onChange } = props;
+    const { minValue, maxValue, initialValue, onChange } = props;
     const [value, setValue] = useState(initialValue);
 
     const className = setClassName(["counter"]);
