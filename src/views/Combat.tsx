@@ -36,11 +36,12 @@ export default function Combat (props: CombatProps) {
                 <Group isVertical={true} noGap={true}>
                     <h2>Player</h2>
 
-                    <Group>
+                    <Group wrap={false}>
                         <div>
                             <label htmlFor="player-skill">Skill</label>
                             <input type="number" id="player-skill" name="player-skill" value={state.stats.skill.value} readOnly={true} />
                         </div>
+
                         <div>
                             <label htmlFor="player-stamina">Stamina</label>
                             <input
