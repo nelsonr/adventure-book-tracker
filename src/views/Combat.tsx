@@ -47,7 +47,7 @@ export default function Combat (props: CombatProps) {
                                 type="number"
                                 id="player-stamina"
                                 name="player-stamina"
-                                value={state.stats.stamina.value}
+                                value={state.stats.stamina.value.toString()}
                                 onChange={onPlayerStaminaInputChange}
                             />
                         </div>
