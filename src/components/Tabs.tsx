@@ -1,4 +1,4 @@
-import { getClassName } from '../Utils';
+import { setClassName } from '../Utils';
 import './Tabs.scss';
 
 interface TabsProps {
@@ -8,7 +8,7 @@ interface TabsProps {
 export function Tabs (props: TabsProps) {
     const { children } = props;
 
-    const className = getClassName([
+    const className = setClassName([
         "tabs",
     ]);
 
@@ -20,7 +20,7 @@ export function Tabs (props: TabsProps) {
 export function TabsHeader (props: TabsProps) {
     const { children } = props;
 
-    const className = getClassName([
+    const className = setClassName([
         "tabs-header",
     ]);
 
@@ -32,7 +32,7 @@ export function TabsHeader (props: TabsProps) {
 export function TabsBody (props: TabsProps) {
     const { children } = props;
 
-    const className = getClassName([
+    const className = setClassName([
         "tabs-body",
     ]);
 
@@ -50,7 +50,7 @@ interface TabsItemProps {
 export function TabsItem (props: TabsItemProps) {
     const { children, isActive, onClick } = props;
 
-    const className = getClassName([
+    const className = setClassName([
         "tabs-item",
         (isActive ? "tabs-item--is-active" : "")
     ]);

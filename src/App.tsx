@@ -73,7 +73,11 @@ function App () {
                         />
                     </TabsItem>
                     <TabsItem isActive={activeTab === 1}>
-                        <Combat state={state} onEnemyChange={onEnemyChange} />
+                        <Combat
+                            state={state}
+                            onEnemyChange={onEnemyChange}
+                            onPlayerStaminaChange={onStatChange("stamina")}
+                        />
                     </TabsItem>
                 </TabsBody>
             </Tabs>

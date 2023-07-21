@@ -1,4 +1,4 @@
-export function getClassName (classList: string[]) {
+export function setClassName (classList: string[]) {
     return classList.join(" ").replaceAll(/\s{2,}/g, " ").trim();
 }
 

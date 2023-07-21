@@ -1,5 +1,5 @@
 import { MouseEvent } from 'react';
-import { cond, getClassName } from '../Utils';
+import { cond, setClassName } from '../Utils';
 import './Button.scss';
 
 interface ButtonProps {
@@ -12,7 +12,7 @@ interface ButtonProps {
 export default function Button (props: ButtonProps) {
     const { children, type, onClick, isDisabled } = props;
 
-    const className = getClassName([
+    const className = setClassName([
         "button",
         (isDisabled ? "button--is-disabled" : "")
     ]);

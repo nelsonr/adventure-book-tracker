@@ -1,4 +1,4 @@
-import { getClassName } from '../Utils';
+import { setClassName } from '../Utils';
 import './ListItem.scss';
 
 interface ListItemProps {
@@ -11,7 +11,7 @@ interface ListItemProps {
 export default function ListItem (props: ListItemProps) {
     const { name, quantity, showQuantity, onClick } = props;
 
-    const className = getClassName([
+    const className = setClassName([
         "list-item",
         (showQuantity === false ? "list-item--hide-quantity" : "")
     ]);

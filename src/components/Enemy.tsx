@@ -1,4 +1,4 @@
-import { getClassName } from '../Utils';
+import { setClassName } from '../Utils';
 import Box from './Box';
 import './Enemy.scss';
 import { ChangeEvent } from 'react';
@@ -12,7 +12,7 @@ interface EnemyProps {
 export function Enemy (props: EnemyProps) {
     const { enemy, onEnemyChange } = props;
 
-    const className = getClassName([
+    const className = setClassName([
         "enemy",
     ]);
 

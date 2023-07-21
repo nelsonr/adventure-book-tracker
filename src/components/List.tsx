@@ -1,5 +1,5 @@
 import { ChangeEvent } from 'react';
-import { getClassName } from '../Utils';
+import { setClassName } from '../Utils';
 import Box from './Box';
 import './List.scss';
 
@@ -12,7 +12,7 @@ interface ListProps {
 export default function List (props: ListProps) {
     const { title, value, onChange } = props;
 
-    const className = getClassName([
+    const className = setClassName([
         "list",
     ]);
 

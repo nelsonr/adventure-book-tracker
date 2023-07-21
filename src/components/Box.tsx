@@ -1,4 +1,4 @@
-import { getClassName } from '../Utils';
+import { setClassName } from '../Utils';
 import './Box.scss';
 
 interface BoxProps {
@@ -8,7 +8,7 @@ interface BoxProps {
 export default function Box (props: BoxProps) {
     const { children } = props;
 
-    const className = getClassName([
+    const className = setClassName([
         "box",
     ]);
 

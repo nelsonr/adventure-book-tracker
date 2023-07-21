@@ -1,4 +1,4 @@
-import { getClassName } from '../Utils';
+import { setClassName } from '../Utils';
 import Box from './Box';
 import './Popup.scss';
 
@@ -10,7 +10,7 @@ interface PopupProps {
 export default function Popup (props: PopupProps) {
     const { children, show } = props;
 
-    const className = getClassName([
+    const className = setClassName([
         "popup",
         (show ? "popup--show" : "")
     ]);

@@ -1,5 +1,5 @@
 import { ChangeEvent } from 'react';
-import { getClassName } from '../Utils';
+import { setClassName } from '../Utils';
 import Box from './Box';
 import Group from './Group';
 import './StatsItem.scss';
@@ -13,7 +13,7 @@ interface StatsItemProps {
 export default function StatsItem (props: StatsItemProps) {
     const { stat, onValueChange: onChange, onInitialValueChange } = props;
 
-    const className = getClassName([
+    const className = setClassName([
         "stats-item",
         (stat.isLocked ? "stats-item--is-locked" : "")
     ]);
@@ -31,6 +31,7 @@ export default function StatsItem (props: StatsItemProps) {
             <Box>
                 <div className={className}>
                     <div className="stats-item__title">{stat.title}</div>
+
                     <Group alignCenter={true} noGap={true} wrap={false}>
                         <div>
                             <label>Current</label>

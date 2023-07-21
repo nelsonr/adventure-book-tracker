@@ -1,4 +1,4 @@
-import { getClassName } from '../Utils';
+import { setClassName } from '../Utils';
 import './Separator.scss';
 
 interface SeparatorProps {
@@ -10,7 +10,7 @@ interface SeparatorProps {
 export default function Separator (props: SeparatorProps) {
     const { size, hideLine, isVertical } = props;
 
-    const className = getClassName([
+    const className = setClassName([
         "separator",
         "separator--" + size,
         (hideLine ? "separator--hide-line" : ""),

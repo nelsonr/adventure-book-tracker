@@ -1,4 +1,4 @@
-import { getClassName } from '../Utils';
+import { setClassName } from '../Utils';
 import './Group.scss';
 
 interface GroupProps {
@@ -13,7 +13,7 @@ interface GroupProps {
 export default function Group (props: GroupProps) {
     const { children, isVertical, noGap, fill, wrap, alignCenter } = props;
 
-    const className = getClassName([
+    const className = setClassName([
         "group",
         (isVertical ? "group--is-vertical" : ""),
         (noGap ? "group--no-gap" : ""),

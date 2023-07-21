@@ -1,3 +1,20 @@
+.combat {
+    --columns: 3;
+    text-align: center;
+}
+
 .combat .group .box {
-    flex: 1 1 30%;
+    flex: 0 1 min(calc((100% - var(--space-base) * (var(--columns) - 1)) / var(--columns)), 100%);
+}
+
+@media screen and (max-width: 766px) {
+    .combat {
+        --columns: 2;
+    }
+}
+
+@media screen and (max-width: 532px) {
+    .combat {
+        --columns: 1;
+    }
 }
